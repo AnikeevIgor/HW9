@@ -1,5 +1,9 @@
 package com.company;
 
+import java.util.Objects;
+
+import static java.util.Objects.hash;
+
 public class Book {
     private String bookName;
     private int publicationYear;
@@ -22,4 +26,19 @@ public class Book {
     public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
+    public String toString (){
+        return "Book name: "+this.bookName+". Author name: "+this.author+". Year publication: "+this.publicationYear;
+
+    }
+    public boolean equals(Object other){
+        if (this.getClass() != other.getClass()){
+            return false;
+        }
+        Book book = (Book) other;
+        return bookName.equals(book.bookName);
+    }
+    public int hashCode(){
+        return Objects.hash(bookName);
+    }
+
 }
